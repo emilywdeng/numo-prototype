@@ -8,15 +8,12 @@ import 'whatwg-fetch';
 //data that shows on cards
 // const data = ['Emily', 'Nathan', 'Lucien'];
 
-const fields = ['Question Text'];
-
 const config = {
   base: 'appCZfN8YJIVjk5vJ',
   table: 'Questions',
   view: 'Grid%20view',
   apiKey: 'keydGpK7XeREMvLjd',
-  maxRecords: '20',
-  fields: 'QuestionText'
+  maxRecords: '20'
 }
 
 const request = new Request(`https://api.airtable.com/v0/${config.base}/${config.table}?maxRecords=${config.maxRecords}&view=${config.view}`, {
@@ -27,8 +24,8 @@ const request = new Request(`https://api.airtable.com/v0/${config.base}/${config
 });
 
 
-const CustomAlertLeft = () => <span>Nope</span>;
-const CustomAlertRight = () => <span>Ok</span>;
+const CustomAlertLeft = () => <span>Dislike</span>;
+const CustomAlertRight = () => <span>Like</span>;
 
 // from CARD
 class App extends React.Component {
@@ -57,12 +54,18 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <Cards onEnd={console.log("action('end')")} className='master-root'>
+        <Cards 
+          alertRight={<CustomAlertRight />} 
+          alertLeft={<CustomAlertLeft />}
+          onEnd={console.log("action('end')")} 
+          className='master-root'
+        >
             {records.map(record =>
               <Card
                 key={JSON.stringify(record.fields.QuestionText)}
                 onSwipeLeft={() => {console.log("action('swipe left')")}}
-                onSwipeRight={() => {console.log("action('swipe right')")}}>
+                onSwipeRight={() => {console.log("action('swipe right')")}}
+              >
                 <h2>{JSON.stringify(record.fields.QuestionText)}</h2>
               </Card>
             )}
