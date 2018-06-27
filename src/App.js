@@ -1,12 +1,14 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+import { Router, Route, Switch, hashHistory} from 'react-router';
+
 import './App.css';
-import Cards, { Card } from 'react-swipe-card';
-import './react-swipe-card.css';
-import 'whatwg-fetch';
-import NavBar from './navigation';
-import './navigation.css';
-import Profile from './profile';
-import { Router, Route, Switch } from 'react-router';
+
+import Questions from './Questions';
+import NavBar from './Navigation';
+import './Navigation.css';
+import Profile from './Profile';
+
 
 
 //data that shows on cards
@@ -45,41 +47,14 @@ const CustomAlertRight = () => <span>Ok</span>;
 
 // from CARD
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { records: [] };
-    this.fetchAirtable = this.fetchAirtable.bind(this);
-  }
-
-  async componentDidMount() {
-    await this.fetchAirtable()
-  }
-
-  async fetchAirtable() {
-    var resp = await fetch(request).catch(err => {console.log(err)})
-    if(resp.status >= 200 && resp.status < 300) {
-      var json = await resp.json()
-      const {records} = json;
-      this.setState({ records });
-    }
-  }
 
   render () {
-    var {records} = this.state;
 
 
     return (
       <div className="App">
-        <Cards onEnd={console.log("action('end')")} className='Cards master-root'>
-            {records.map(record =>
-              <Card
-                key={JSON.stringify(record.fields.QuestionText)}
-                onSwipeLeft={() => {console.log("action('swipe left')")}}
-                onSwipeRight={() => {console.log("action('swipe right')")}}>
-                <h2>{JSON.stringify(record.fields.QuestionText)}</h2>
-              </Card>
-            )}
-          </Cards>
+        <Questions>
+        </Questions>
 
         <NavBar>
         </NavBar>
