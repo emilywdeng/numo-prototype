@@ -3,6 +3,8 @@ import './App.css';
 import Cards, { Card } from 'react-swipe-card';
 import './react-swipe-card.css';
 import 'whatwg-fetch';
+import NavBar from './navigation';
+import './navigation.css';
 
 
 //data that shows on cards
@@ -29,6 +31,15 @@ const request = new Request(`https://api.airtable.com/v0/${config.base}/${config
 
 const CustomAlertLeft = () => <span>Nope</span>;
 const CustomAlertRight = () => <span>Ok</span>;
+
+
+//class NavBar extends React.Component {
+//  render () {
+//    return (
+//      <div className="NavBar">Hello world!</div>
+//    );
+//  }
+//}
 
 // from CARD
 class App extends React.Component {
@@ -67,7 +78,11 @@ class App extends React.Component {
               </Card>
             )}
           </Cards>
+
+        <NavBar>
+        </NavBar>
       </div>
+
     );
   }
 };
