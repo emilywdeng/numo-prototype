@@ -8,7 +8,11 @@ import 'whatwg-fetch';
 //data that shows on cards
 // const data = ['Emily', 'Nathan', 'Lucien'];
 
-const fields = ['Question Text'];
+// const fields = ['Question Text'];
+
+
+const CustomAlertLeft = () => <span>Dislike</span>;
+const CustomAlertRight = () => <span>Like</span>;
 
 const config = {
   base: 'appCZfN8YJIVjk5vJ',
@@ -25,10 +29,6 @@ const request = new Request(`https://api.airtable.com/v0/${config.base}/${config
     'Authorization': `Bearer ${config.apiKey}`
   })
 });
-
-
-const CustomAlertLeft = () => <span>Nope</span>;
-const CustomAlertRight = () => <span>Ok</span>;
 
 
 //class NavBar extends React.Component {
@@ -66,7 +66,12 @@ class Questions extends React.Component {
 
     return (
       <div className="Questions">
-        <Cards onEnd={console.log("action('end')")} className='Cards master-root'>
+        <Cards 
+          alertRight={<CustomAlertRight />} 
+          alertLeft={<CustomAlertLeft />}
+          onEnd={console.log("action('end')")} 
+          className='Cards master-root'
+        >
             {records.map(record =>
               <Card
                 key={JSON.stringify(record.fields.QuestionText)}
