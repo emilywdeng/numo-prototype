@@ -27,7 +27,38 @@ const request = new Request(`https://api.airtable.com/v0/${config.base}/${config
 const CustomAlertLeft = () => <span>Dislike</span>;
 const CustomAlertRight = () => <span>Like</span>;
 
-// from CARD
+// QUESTION COMPONENT
+
+class Question extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { records: [] };
+    this.fetchAirtable = this.fetchAirtable.bind(this);
+  }
+
+  async componentDidMount() {
+    await this.fetchAirtable()
+  }
+
+  async fetchAirtable() {
+    var resp = await fetch(request).catch(err => {console.log(err)})
+    if(resp.status >= 200 && resp.status < 300) {
+      var json = await resp.json()
+      const {records} = json;
+      this.setState({ records });
+    }
+  }
+
+  // render() {
+  //   var {records} = this.state;
+
+  //   return(
+  //     {records.map(record => {JSON.stringify(record.fields.QuestionText)}); }
+  //   );
+  // }
+}
+
+// CARD COMPONENT
 class App extends React.Component {
   constructor(props) {
     super(props);

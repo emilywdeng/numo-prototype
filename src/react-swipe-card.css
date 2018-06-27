@@ -24,32 +24,38 @@ li {
 
 h1, h2 {
   font-weight: 500;
+  font-size: 20px;
 }
+
+/*iPhone sizes: X (375 x 812), 8 Plus (414 x 736), 5 (320 x 568)*/
 
 .master-root {
   margin: 20px auto;
   position: relative;
-  height: 200px;
-  min-height: 300px;
-  max-height: 100px;
-  min-width: 300px;
-  max-width: 100px;
-  width: 300px;
+  width: 100vw;
+/*  min-width: 320px;
+  max-width: 414px;*/
+  height: 100vh;
+/*  min-height: 568px;
+  max-height: 812px;*/
   overflow: hidden;
   border: 1px solid #e5e5e5;
   size: 300px;
 }
 
 .card {
-  background-color: white;
+  /*background-color: white;*/
   background-size: cover;
   position: absolute;
-  background: #F8F3F3;
-  height: 200px;
-  width: 180px;
+  background: white;
+  border: 2px solid blue;
+  border-radius: 15px;
+  height: 80%;
+  width: 70%;
   margin: 0 auto;
+  padding: 10% 2% 2%;
   transition: box-shadow .3s;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  /*box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);*/
   cursor: pointer;
 }
 
@@ -79,7 +85,7 @@ h1, h2 {
 }
 
 .alert-right {
-  top: 0;
+  bottom: 0;
   right: 0;
   background: green;
   border-top-left-radius: 50px;
@@ -87,7 +93,7 @@ h1, h2 {
 }
 
 .alert-left {
-  top: 0;
+  bottom: 0;
   left: 0;
   background: red;
   border-top-right-radius: 50px;
