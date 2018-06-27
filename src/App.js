@@ -1,8 +1,14 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+import { Router, Route, Switch, hashHistory} from 'react-router';
+
 import './App.css';
-import Cards, { Card } from 'react-swipe-card';
-import './react-swipe-card.css';
-import 'whatwg-fetch';
+
+import Questions from './Questions';
+import NavBar from './Navigation';
+import './Navigation.css';
+import Profile from './Profile';
+
 
 
 //data that shows on cards
@@ -27,33 +33,24 @@ const request = new Request(`https://api.airtable.com/v0/${config.base}/${config
 const CustomAlertLeft = () => <span>Dislike</span>;
 const CustomAlertRight = () => <span>Like</span>;
 
+
+//class NavBar extends React.Component {
+//  render () {
+//    return (
+//      <div className="NavBar">Hello world!</div>
+//    );
+//  }
+//}
+
 // from CARD
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { records: [] };
-    this.fetchAirtable = this.fetchAirtable.bind(this);
-  }
-
-  async componentDidMount() {
-    await this.fetchAirtable()
-  }
-
-  async fetchAirtable() {
-    var resp = await fetch(request).catch(err => {console.log(err)})
-    if(resp.status >= 200 && resp.status < 300) {
-      var json = await resp.json()
-      const {records} = json;
-      this.setState({ records });
-    }
-  }
 
   render () {
-    var {records} = this.state;
 
 
     return (
       <div className="App">
+<<<<<<< HEAD
         <Cards 
           alertRight={<CustomAlertRight />} 
           alertLeft={<CustomAlertLeft />}
@@ -70,7 +67,15 @@ class App extends React.Component {
               </Card>
             )}
           </Cards>
+=======
+        <Questions>
+        </Questions>
+
+        <NavBar>
+        </NavBar>
+>>>>>>> Global-Nav-Bar
       </div>
+
     );
   }
 };

@@ -1,0 +1,12 @@
+.App {
+  /* Set App size maximums to make it phone sized
+     This is wrong since pixel density is greater on phones? */
+  height: 100vh;
+  width: 100vw;
+  background-color: bisque;
+}
+
+.Cards {
+  background-color: #fff;
+}
+
