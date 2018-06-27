@@ -5,6 +5,8 @@ import './react-swipe-card.css';
 import 'whatwg-fetch';
 import NavBar from './navigation';
 import './navigation.css';
+import Profile from './profile';
+import { Router, Route, Switch } from 'react-router';
 
 
 //data that shows on cards
@@ -68,7 +70,7 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <Cards onEnd={console.log("action('end')")} className='master-root'>
+        <Cards onEnd={console.log("action('end')")} className='Cards master-root'>
             {records.map(record =>
               <Card
                 key={JSON.stringify(record.fields.QuestionText)}
